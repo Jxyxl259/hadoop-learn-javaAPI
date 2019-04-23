@@ -1,0 +1,15 @@
+/.idea
+*.class
+*/target
+*.iml
+/.settings
+*/.settings
+*.project
+*.classpath
+rebel.xml
+leconf
+.DS_Store
+target
+/web-webapp/src/test/java/com/lenovo/m2/web/test/middletier/cart/UrlTest.java
+web-webapp/src/test/java/com/lenovo/m2/web/test/middletier/base/SingleTest.java
+
