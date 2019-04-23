@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple ReadFileFromHDFS.
  */
 public class AppTest {
     /**

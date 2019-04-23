@@ -15,10 +15,14 @@ import java.io.StringWriter;
  * Hello world!
  *
  */
-public class App {
+public class ReadFileFromHDFS {
 
     public static String path_1 = "/user/jiangbug/hadoop/wcinput/wc.txt";
 
+    /**
+     * 读取 HDFS上的文件
+     * @param args
+     */
     public static void main( String[] args ) {
         FileSystem fs = null;
 
@@ -59,6 +63,7 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // 使用hadoop提供的工具类直接关闭流
             org.apache.hadoop.io.IOUtils.closeStream(fsDataInputStream);
         }
 
