@@ -15,9 +15,11 @@ import java.io.StringWriter;
  * Hello world!
  *
  */
-public class ReadFileFromHDFS {
+public class ReadFileFromHDFS extends BaseComponent{
 
     public static String path_1 = "/user/jiangbug/hadoop/wcinput/wc.txt";
+
+
 
     /**
      * 读取 HDFS上的文件
@@ -25,9 +27,9 @@ public class ReadFileFromHDFS {
      */
     public static void main( String[] args ) {
         FileSystem fs = null;
-
+        ReadFileFromHDFS testObj = new ReadFileFromHDFS();
         try {
-            fs = getHDFSFileSyetem();
+            fs = testObj.getHDFSFileSyetem();
             String s = getHDFSFileAsInputStream(path_1, fs);
             System.out.println(s);
         } catch (IOException e) {
@@ -35,18 +37,7 @@ public class ReadFileFromHDFS {
         }
     }
 
-    /**
-     * 获取HDFS文件系统
-     * @return
-     */
-    public static FileSystem getHDFSFileSyetem()throws IOException{
-        // core-site.xml, core-default.xml, hdfd-site.xml, hdfs-default.xml
-        // 解析上述配置文件的， 将core-site.xml 与 hdfs-site.xml  log4j.properties拷贝到 项目的 resources目录下
-        Configuration conf  = new Configuration();
-        FileSystem fs  =  FileSystem.get(conf);
-        return fs;
 
-    }
 
     /**
      * 将HDFS文件系统中的文件以流的形式读进来
@@ -79,10 +70,10 @@ public class ReadFileFromHDFS {
         StringWriter sw = new StringWriter();
 
         int len = 0;
-        byte[] arr = new byte[128];
+        byte[] arr = new byte[BUFF_SIZE];
         while((len = is.read(arr)) != -1){
 //            String s = new String(arr);
-            if(len != 128){
+            if(len != BUFF_SIZE){
                 sw.write(new String(arr,0,len));
             }else{
                 sw.write(new String(arr));
