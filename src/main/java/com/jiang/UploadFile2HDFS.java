@@ -14,15 +14,22 @@ import java.io.IOException;
 public class UploadFile2HDFS extends BaseComponent{
 
     /**
-     * HDFS上的目的文件路径
+     * HDFS上的  目的文件路径 + 文件名
      */
-    public static String dest_path = "/user/jiangbug/hadoop/test/fileupload";
+    public static String dest_file = "/user/jiangbug/hadoop/test/fileupload/wc_count.txt";
 
     /**
      * 本地文件
      */
     public static String local_file = "/data/test/wc_count.txt";
 
+
+    /**
+     * check file on HDFS
+     * bin ]# ./hdfs dfs -cat /user/jiangbug/hadoop/test/fileupload/wc_count.txt
+     * after method executed successfully
+     * @param args
+     */
     public static void main(String[] args) {
 
         UploadFile2HDFS testObj = new UploadFile2HDFS();
@@ -34,7 +41,7 @@ public class UploadFile2HDFS extends BaseComponent{
             // 获取到hdfs 文件系统对象
             fs = testObj.getHDFSFileSyetem();
             // 创建 path对象
-            Path p = new Path(dest_path);
+            Path p = new Path(dest_file);
             // 创建数据输出流
             fsDataOutputStream = fs.create(p);
             // 将本地文件读入内存
