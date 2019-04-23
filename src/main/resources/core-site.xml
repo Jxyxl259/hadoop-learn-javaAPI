@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<!-- 配置HDFS NameNode所在的机器，配置了该项，MapReduce就会从HDFS文件系统上寻找数据源文件夹而不是从本地文件系统中寻找 -->
+    	<property>
+        	<name>fs.defaultFS</name> <!-- 默认值file:/// 从本地文件系统查找数据源所在文件目录 -->
+        	<!-- 将localhost改为自己的主机名 Hadoop2+的端口号一般是8020 -->
+        	<value>hdfs://hadoop-101.com:8020</value>
+	</property>
+
+	<!-- Hadoop 默认的配置项查看地址 hadoop.apache.org/docs/r2.5.2/hadoop-project-dist/hadoop-common/SingleCluster.html 左侧列表Configuration栏的core-default.xml中 -->
+	<!-- 设置Hadoop默认的运行时临时文件存放路径 -->
+	<property>
+ 		<!-- 修改默认的临时文件，该文件需要先创建出来，在hadoop安装目录下创建data/tmp作为该配置项的值 -->
+        	<name>hadoop.tmp.dir</name>
+        	<value>/opt/module/hadoop-2.5.0/data/tmp</value>
+	</property>
+
+	<property>
+    		<!-- 当在HDFS上删除文件后，该文件保存在回收站的时间 7天 10080min -->
+    		<name>fs.trash.interval</name>
+    		<value>10080</value> <!-- 不能使用 7 * 24 * 60 -->
+    		<description>...</description>
+	</property>
+
+</configuration>
