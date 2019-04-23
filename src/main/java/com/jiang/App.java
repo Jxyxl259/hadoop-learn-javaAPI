@@ -77,7 +77,11 @@ public class App {
         byte[] arr = new byte[128];
         while((len = is.read(arr)) != -1){
 //            String s = new String(arr);
-            sw.write(new String(arr));
+            if(len != 128){
+                sw.write(new String(arr,0,len));
+            }else{
+                sw.write(new String(arr));
+            }
         }
         return sw.toString();
     }
