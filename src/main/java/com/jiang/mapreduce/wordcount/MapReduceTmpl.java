@@ -40,6 +40,15 @@ public class MapReduceTmpl extends Configured implements Tool {
     // TODO Map program output key/value generic-type
     static class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
+        /**
+         * @param context
+         * @throws IOException
+         * @throws InterruptedException
+         */
+        @Override
+        public void setup(Context context) throws IOException, InterruptedException {
+            // TODO 所有map开始执行前的预处理工作
+        }
 
         /**
          * @param key
@@ -49,10 +58,20 @@ public class MapReduceTmpl extends Configured implements Tool {
          * @throws InterruptedException
          */
         @Override
-        protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
             // TODO map 逻辑
 
+        }
+
+        /**
+         * @param context
+         * @throws IOException
+         * @throws InterruptedException
+         */
+        @Override
+        public void cleanup(Context context) throws IOException, InterruptedException {
+            // TODO 所有map 任务执行结束后的收尾工作
         }
     }
 
@@ -65,10 +84,20 @@ public class MapReduceTmpl extends Configured implements Tool {
     static class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
 
         @Override
-        protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+        public void setup(Context context) throws IOException, InterruptedException {
+            // TODO 所有 reduce 开始执行前的预处理工作
+        }
+
+        @Override
+        public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
 
             // TODO reduce 逻辑
 
+        }
+
+        @Override
+        public void cleanup(Context context) throws IOException, InterruptedException {
+            // TODO 所有 reduce 任务执行结束后的收尾工作
         }
     }
 
