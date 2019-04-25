@@ -1,4 +1,4 @@
-package com.jiang;
+package com.jiang.hdfs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;

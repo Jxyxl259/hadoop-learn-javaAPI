@@ -1,0 +1,5 @@
+hadoop yarn
+hadoop mapreduce
+hadoop hdfs
+yarn nodemanager
+hadoop resourcemanager

@@ -1,12 +1,7 @@
-package com.jiang;
+package com.jiang.hdfs;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
-import org.apache.hadoop.io.IOUtils;
-import org.mortbay.util.IO;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
