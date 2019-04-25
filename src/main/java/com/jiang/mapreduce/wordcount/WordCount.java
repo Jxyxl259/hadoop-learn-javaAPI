@@ -79,7 +79,7 @@ public class WordCount {
      * @author:
      * @create: 2019-04-24 18:00
      */
-    public class WcReduce extends Reducer<Text, IntWritable, Text, IntWritable> {
+    static class WcReduce extends Reducer<Text, IntWritable, Text, IntWritable> {
 
         private IntWritable mapOutputValue = new IntWritable();
 
