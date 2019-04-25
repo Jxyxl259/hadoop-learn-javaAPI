@@ -153,7 +153,7 @@ public class WordCount {
         Path outPath = new Path(outputPath);
         FileOutputFormat.setOutputPath(job, outPath);
 
-        // submit job
+        // submit job   true: show execute log under Linux
         boolean complated = job.waitForCompletion(true);
 
         return complated ? 0 : 1;

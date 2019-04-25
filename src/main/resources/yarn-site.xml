@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+    <!-- nodemanager 节点可用的物理内存大小 默认8192 -->
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>4096</value>
+    </property>
+
+    <!-- nodemanager 节点可用的CPU数量 -->
+    <property>
+        <name>yarn.nodemanager.resource.cpu-vcores</name>
+        <value>4</value>
+    </property>
+
+    <!-- 单个任务可申请的最多物理内存量，默认是8192 -->
+    <property>
+        <name>yarn.schaduler.maximum-allocation-mb</name>
+        <value>4096</value>
+    </property>
+</configuration>
+
