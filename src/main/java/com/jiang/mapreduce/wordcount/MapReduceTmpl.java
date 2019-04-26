@@ -130,10 +130,32 @@ public class MapReduceTmpl extends Configured implements Tool {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
+        //------------- shuffle ---------------------
+        // partition
+//        job.setPartitionerClass();
+        // sort
+//        job.setSortComparatorClass();
+        // combiner(optional)
+//        job.setCombinerClass(); // combiner继承一个reduce的类
+        // group
+//        job.setGroupingComparatorClass();
+        // compress 在配置文件中设置，也可直接设置在 Configuration里
+        // mapred-site.xml
+        // mapreduce.output.fileoutputformat.compress           默认false 对output输出文件的压缩
+        // mapreduce.output.fileoutputformat.compress.type      默认RECORD
+        // mapreduce.output.fileoutputformat.compress.codec     默认org.apache.hadoop.io.compress.DefaultCodec 使用的压缩方式
+        // mapreduce.map.output.compress                        默认false 对map输出内容的压缩
+        // mepreduce.map.output.compress.codec                  默认org.apache.hadoop.io.compress.DefaultCodec
+        //------------- shuffle ---------------------
+
+
         // reduce
         job.setReducerClass(Reduce.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
+        // set reduce task number
+//        job.setNumReduceTasks();
+
 
         // output
         Path outPath = new Path(args[1]);
@@ -153,6 +175,9 @@ public class MapReduceTmpl extends Configured implements Tool {
         try {
 
             Configuration conf = new Configuration();
+            // 设置压缩
+//            conf.set("mapreduce.map.output.compress","ture");
+//            conf.set("mapreduce.map.output.compress.codec","[CompressionCodec接口的实现类的全类名，常用org.apache.hadoop.io.compress.SnappyCodec]");
             int run = ToolRunner.run(conf, new MapReduceTmpl(), args);
             System.exit(run);
 
